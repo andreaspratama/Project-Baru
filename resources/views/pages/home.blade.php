@@ -41,10 +41,14 @@
                     @if (auth()->user()->role == 'guru')
                         <h1 class="mb-3">
                             @if (auth()->user()->role == 'guru')
-                                Selamat Datang {{auth()->user()->name}}
+                                Selamat Datang 
+                                <br>
+                                {{auth()->user()->name}}
                             @endif
                             @if (auth()->user()->role == 'siswa')   
-                                Selamat Datang {{auth()->user()->name}}
+                                Selamat Datang
+                                <br>
+                                {{auth()->user()->name}}
                             @endif
                         </h1>
                         <p class="mb-5">
