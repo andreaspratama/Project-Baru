@@ -78,6 +78,6 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'tulisan' => array(
-    'normal' => $fontDir . '/tulisan-normal_bdc4dd7e7c17dcc88516974ee07e1bfe',
+    'normal' => $fontDir . '/tulisan-normal_b2b7b0ab2a85cc415c04d4455b4ea35b',
   ),
 ) ?>

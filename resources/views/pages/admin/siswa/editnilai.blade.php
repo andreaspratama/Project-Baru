@@ -43,6 +43,20 @@
                       @enderror
                     </div>
                 </div>
+                <div class="form-group">
+                  <label for="rekomendasi">Rekomendasi</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="rekomendasi"><i class="far fa-id-card"></i></span>
+                    </div>
+                    <input type="text" class="form-control @error('rekomendasi') is-invalid @enderror" placeholder="Rekomendasi" name="rekomendasi">
+                    @error('rekomendasi')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                    @enderror
+                  </div>
+                </div>
                 <button class="btn btn-primary btn-sm" type="submit">Simpan Perubahan</button>
               </form>
             </div>

@@ -34,23 +34,27 @@
             margin: 0;
             /* background-color: #3366cc; */
         }
+
+        header .logo {
+            width: 150px;
+        }
         
         img {
             /* line-height: 100px; */
-            width: 120px;
+            width: 75px;
             margin-top: -10px;
         }
 
         @font-face {
-            font-family: 'tulisan';
-            src: url({{storage_path("fonts/Poppins-Bold.ttf")}}) format("truetype");
+            font-family: tulisan;
+            src: url('popp/Poppins-Black.ttf')
         }
 
         .text-head-title {
             color: #000;
             font-weight: bold;
             margin-top: -40px;
-            font-family: 'tulisan';
+            /* font-family: tulisan; */
         }
 
         .text-head {
@@ -110,7 +114,7 @@
                 // $foto = storage_path("app/public/" . Auth::user()->guru->ttd);
                 $logos = storage_path("app/public/assets/gallery/logo-putih.png")
             ?>
-            <img src="{{$logos}}" alt="">
+            <img class="logo" src="{{$logos}}" alt="">
         </center>
         <center>
             <div class="text-head-title">
@@ -119,29 +123,29 @@
         </center>
         <center>
             <div class="text-head">
-                @if ($item->unit === 'SMA')
+                @if ($item->unit === 'K1')
                     <div class="unit">
-                        SMA Kristen YSKI Semarang
-                    </div>
-                    <br>
-                    <div class="unit-text">
-                        Jl. Sidodadi Timur No. 23
-                    </div>
-                @elseif($item->unit === 'SMP')
-                    <div class="unit">
-                        SMP Kristen YSKI Semarang
-                    </div>
-                    <br>
-                    <div class="unit-text">
-                        Jl. Sidodadi Timur No. 23
-                    </div>
-                @elseif($item->unit === 'K1')
-                    <div class="unit">
-                        SD Kristen 1 YSKI Semarang
+                        PG TK Kristen 1 YSKI Semarang
                     </div>
                     <br>
                     <div class="unit-text">
                         Jl. Kompol Maksum No. 280 Semarang
+                    </div>
+                @elseif($item->unit === 'K2')
+                    <div class="unit">
+                        PG TK Kristen 2 YSKI Semarang
+                    </div>
+                    <br>
+                    <div class="unit-text">
+                        Jl. dr. Cipto No. 109 Semarang
+                    </div>
+                @elseif($item->unit === 'K3')
+                    <div class="unit">
+                        PG TK Kristen 3 YSKI Semarang
+                    </div>
+                    <br>
+                    <div class="unit-text">
+                        Jl. Tanjung No. 14 Semarang
                     </div>
                 @endif
             </div>
@@ -229,15 +233,7 @@
                               <td>
                                 @foreach ($item->mapel as $ma)
                                     @if ($m->id === $ma->pivot->mapel_id)
-                                    @if ($ma->pivot->nilai >= 90)
-                                        Perlu dibimbing sampai berhasil
-                                    @elseif ($ma->pivot->nilai >= 80)
-                                        Perlu dibimbing dalam penyampaian
-                                    @elseif ($ma->pivot->nilai >= 70)
-                                        Tahanlah
-                                    @elseif ($ma->pivot->nilai <=69)
-                                        Dididik
-                                    @endif
+                                        {{$ma->pivot->rekomendasi}}
                                         {{-- {{$ma->pivot->nilai}} --}}
                                     {{-- @elseif ($m->id === $ma->pivot->mapel_id)
                                         {{$ma->pivot->nilai}}
@@ -310,7 +306,7 @@
                 // $j = ;
                 $foto = storage_path("app/public/" . Auth::user()->guru->ttd);
             ?>
-            <p style="margin-right: 90px; margin-top: -25px"><img src="{{$foto}}" alt=""></p>
+            <p style="margin-right: 150px; margin-top: -25px"><img src="{{$foto}}" alt=""></p>
             <p style="margin-top: -40px; margin-right: 110px">{{Auth::user()->name}}</p>
         </div>
     </footer>

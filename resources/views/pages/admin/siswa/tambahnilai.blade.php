@@ -79,26 +79,9 @@
                               </td>
                               <td>
                                 @foreach ($item->mapel as $ma)
-                                    @if ($m->id === $ma->pivot->mapel_id)
-                                      @if ($ma->pivot->nilai >= 90)
-                                          Pertahankan
-                                      @elseif ($ma->pivot->nilai >= 80)
-                                          Lumayan Pertahankan
-                                      @elseif ($ma->pivot->nilai >= 70)
-                                          Tahanlah
-                                      @elseif ($ma->pivot->nilai <=69)
-                                          Dididik
-                                      @endif
-                                        {{-- {{$ma->pivot->nilai}} --}}
-                                    {{-- @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}} --}}
-                                    @endif
+                                  @if ($m->id === $ma->pivot->mapel_id)
+                                    {{$ma->pivot->rekomendasi}}
+                                  @endif
                                 @endforeach
                               </td>
                               <td>

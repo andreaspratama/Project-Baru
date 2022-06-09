@@ -176,7 +176,7 @@ class NilaiController extends Controller
         $thn = Thnakademik::where('status', 'Aktif')->first();
         $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->mapel()->attach($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha]);
+        $item->mapel()->attach($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha, 'rekomendasi' => $request->rekomendasi]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -212,7 +212,7 @@ class NilaiController extends Controller
         $thn = Thnakademik::where('status', 'Aktif')->first();
         $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->mapel()->updateExistingPivot($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha]);
+        $item->mapel()->updateExistingPivot($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha, 'rekomendasi' => $request->rekomendasi]);
         
         // $siswa = Siswa::findOrFail($id);
 
