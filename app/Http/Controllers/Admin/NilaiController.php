@@ -25,11 +25,25 @@ class NilaiController extends Controller
         return view('pages.admin.siswa.masuknilai', compact('items'));
     }
 
+    public function cekNilai()
+    {
+        $items = Jadwalmapel::all();
+
+        return view('pages.admin.siswa.cekNilaiInfo', compact('items'));
+    }
+
     public function proses($kelas)
     {
         $pnilai = Siswa::all()->whereBetween('kelas', [$kelas]);
 
         return view('pages.admin.siswa.prosnilai', compact('pnilai'));
+    }
+
+    public function cekProses($kelas)
+    {
+        $pnilai = Siswa::all()->whereBetween('kelas', [$kelas]);
+
+        return view('pages.admin.siswa.prosCek', compact('pnilai'));
     }
 
     public function prosesDua($kelas)
@@ -48,6 +62,16 @@ class NilaiController extends Controller
         $projects = Project::all();
 
         return view('pages.admin.siswa.tambahnilai', compact('item', 'mapel', 'thnakademiks', 'projects'));
+    }
+
+    public function detailCek($id)
+    {
+        $item = Siswa::findOrFail($id);
+        $mapel = Mapel::all();
+        $thnakademiks = Thnakademik::all();
+        $projects = Project::all();
+
+        return view('pages.admin.siswa.halCekNilai', compact('item', 'mapel', 'thnakademiks', 'projects'));
     }
 
     public function detailNilai($id)
@@ -149,8 +173,10 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $mapel = Mapel::findOrFail($idmapel);
+        $thn = Thnakademik::where('status', 'Aktif')->first();
+        $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->mapel()->attach($mapel, ['nilai' => $request->nilai]);
+        $item->mapel()->attach($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -165,8 +191,10 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $project = Project::findOrFail($idproject);
+        $thn = Thnakademik::where('status', 'Aktif')->first();
+        $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->project()->attach($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil]);
+        $item->project()->attach($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil, 'thnakademik' => $ha]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -181,8 +209,10 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $mapel = Mapel::findOrFail($idmapel);
+        $thn = Thnakademik::where('status', 'Aktif')->first();
+        $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->mapel()->updateExistingPivot($mapel, ['nilai' => $request->nilai]);
+        $item->mapel()->updateExistingPivot($mapel, ['nilai' => $request->nilai, 'thnakademik' => $ha]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -197,8 +227,10 @@ class NilaiController extends Controller
     {
         $item = Siswa::findOrFail($id);
         $project = Project::findOrFail($idproject);
+        $thn = Thnakademik::where('status', 'Aktif')->first();
+        $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        $item->project()->updateExistingPivot($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil]);
+        $item->project()->updateExistingPivot($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil, 'thnakademik' => $ha]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -247,7 +279,7 @@ class NilaiController extends Controller
         $sekolah = Sekolah::all();
         $tanggal = date("d-m-Y");
 
-        $pdf = \PDF::loadview('export.cetakNilaiSiswapdf', compact('mapel', 'item', 'sekolah', 'projects', 'thnakademiks', 'tanggal'));
+        $pdf = \PDF::loadview('export.cetakNilaiSiswapdf', compact('mapel', 'item', 'sekolah', 'projects', 'thnakademiks', 'tanggal'))->setPaper('a4', 'landscape');
         // return $pdf->download('laporan-absen.pdf');
         return $pdf->stream();
     }

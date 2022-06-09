@@ -18,7 +18,7 @@ class DashboardController extends Controller
         $siswa = Siswa::count();
         $guru = Guru::count();
         $mapel = Mapel::count();
-        $ruang = Ruang::count();
+        // $ruang = Ruang::count();
         // $pie = [
         //     'laki' => Siswa::where('jns_kelamin', 'L')->count(),
         //     'perempuan' => Siswa::where('jns_kelamin', 'P')->count()
@@ -27,8 +27,7 @@ class DashboardController extends Controller
             'items' => $items,
             'siswa' => $siswa,
             'guru' => $guru,
-            'mapel' => $mapel,
-            'ruang' => $ruang
+            'mapel' => $mapel
         ]);
     }
 }

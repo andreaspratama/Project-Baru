@@ -31,7 +31,6 @@
                               <th>Nilai</th>
                               <th>Deskripsi</th>
                               <th>Rekomendasi</th>
-                              <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -72,7 +71,7 @@
                                 @elseif ($m->nama_mapel === 'Communication')
                                     Kemampuan dan Kejelasan menyampaikan pesan
                                 @elseif ($m->nama_mapel === 'Collaboration')
-                                    Kerjasama dan Kemampuan beradaptasi
+                                    Kerjasama dan Kemampuan beradaptasi dalam tim
                                 @elseif ($m->nama_mapel === 'Leadership')
                                     Sikap Tanggung Jawab dan Kedisiplinan
                                 @endif
@@ -100,15 +99,6 @@
                                         {{$ma->pivot->nilai}} --}}
                                     @endif
                                 @endforeach
-                              </td>
-                              <td>
-                                @if ($item->mapel()->where('mapel_id', $m->id)->exists())
-                                    <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaiedit" class="btn btn-sm btn-warning">Edit Nilai</a>
-                                @else
-                                    <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaitambah" class="btn btn-primary btn-sm">Input Nilai</a>
-                                @endif
-                                <!--<a href="/siswa/{{$item->id}}/{{$m->id}}/nilaitambah" class="btn btn-primary btn-sm">Input Nilai</a>-->
-                                <!--<a href="/siswa/{{$item->id}}/{{$m->id}}/nilaiedit" class="btn btn-sm btn-warning">Edit Nilai</a>-->
                               </td>
                             </tr>
                             @endforeach

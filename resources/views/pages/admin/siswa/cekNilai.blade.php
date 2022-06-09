@@ -72,7 +72,7 @@
                                 @elseif ($m->nama_mapel === 'Communication')
                                     Kemampuan dan Kejelasan menyampaikan pesan
                                 @elseif ($m->nama_mapel === 'Collaboration')
-                                    Kerjasama dan Kemampuan beradaptasi
+                                    Kerjasama dan Kemampuan beradaptasi dalam tim
                                 @elseif ($m->nama_mapel === 'Leadership')
                                     Sikap Tanggung Jawab dan Kedisiplinan
                                 @endif

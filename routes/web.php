@@ -153,8 +153,11 @@ Route::prefix('/')
             Route::post('absen', 'GuruController@absenpros');
             Route::get('guru/nilai', 'NilaiController@index');
             Route::get('guru/nilaiProsesKelas/{kelas}', 'NilaiController@proses');
+            Route::get('guru/cekNilai', 'NilaiController@cekNilai');
+            Route::get('guru/cekNilaiProsesKelasCek/{kelas}', 'NilaiController@cekProses');
             Route::get('guru/nilaiProses/{kelas}', 'NilaiController@prosesDua');
             Route::get('siswa/{siswa}/nilai', 'NilaiController@detail');
+            Route::get('siswa/{siswa}/nilaiCek', 'NilaiController@detailCek');
             Route::get('siswa/{siswa}/detail', 'NilaiController@detailNilai');
             Route::post('siswa/{siswa}/nilaitambah', 'NilaiController@nilai');
             Route::post('siswa/{siswa}/nilaitambahproject', 'NilaiController@nilaiproject');

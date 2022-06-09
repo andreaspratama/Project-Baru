@@ -19,6 +19,7 @@ class CreateMapelSiswaTable extends Migration
             $table->integer('mapel_id')->nullable();
             $table->string('thnakademik')->nullable();
             $table->string('nilai')->nullable();
+            $table->string('rekomendasi')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
