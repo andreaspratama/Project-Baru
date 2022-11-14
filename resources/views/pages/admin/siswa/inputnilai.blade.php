@@ -43,7 +43,7 @@
                       @enderror
                     </div>
                 </div>
-                <div class="form-group">
+                {{-- <div class="form-group">
                   <label for="rekomendasi">Rekomendasi</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
@@ -56,7 +56,7 @@
                       </div>
                     @enderror
                   </div>
-                </div>
+                </div> --}}
                 <button class="btn btn-primary btn-sm" type="submit">Simpan Nilai</button>
               </form>
             </div>

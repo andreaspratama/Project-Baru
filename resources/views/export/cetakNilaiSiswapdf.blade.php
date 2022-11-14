@@ -8,17 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> --}}
-    {{-- <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <style>
         @page {
             margin: 0px;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
@@ -36,13 +33,15 @@
         }
 
         header .logo {
-            width: 150px;
+            width: 50px;
+            margin-top: 10px;
         }
         
         img {
             /* line-height: 100px; */
-            width: 75px;
-            margin-top: -10px;
+            width: 100px;
+            max-width: 100px;
+            /* margin-top: -10px; */
         }
 
         @font-face {
@@ -53,7 +52,8 @@
         .text-head-title {
             color: #000;
             font-weight: bold;
-            margin-top: -40px;
+            margin-top: -15px;
+            font-size: 10px;
             /* font-family: tulisan; */
         }
 
@@ -63,13 +63,14 @@
         }
 
         .text-head .unit {
-            font-size: 18px;
+            font-size: 16px;
+            margin-top: -18px;
             font-weight: lighter;
         }
 
         .text-head .unit-text {
             font-size: 12px;
-            margin-top: -27px;
+            margin-top: -29px;
             font-weight: lighter;
         }
 
@@ -82,18 +83,44 @@
             text-align: left;
         }
 
+        .soft .p {
+            margin-top: -50px;
+        }
+
         .sfp{
-            width: 80%;
+            width: 95%;
             margin-left: auto;
             margin-right: auto;
-            height: 10px;
+        }
+
+        .sfp td {
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            line-height: 1;
+        }
+
+        .sfp th {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1;
         }
 
         .sp{
-            width: 80%;
+            width: 95%;
             margin-left: auto;
             margin-right: auto;
-            height: 10px;
+        }
+
+        .sp th {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            line-height: 1;
+        }
+
+        .sp td {
+            font-family: 'Poppins', sans-serif;
+            font-size: 12px;
+            line-height: 1;
         }
 
         .sfp tbody{
@@ -117,8 +144,8 @@
             <img class="logo" src="{{$logos}}" alt="">
         </center>
         <center>
-            <div class="text-head-title">
-                <h2>Project Based Report</h2>
+            <div class="text-head-title" style="font-family: 'Poppins', sans-serif;">
+                <h2 style="font-size: 24px">Project Based Report</h2>
             </div>
         </center>
         <center>
@@ -151,7 +178,7 @@
             </div>
         </center>
       </header>
-      <table style="margin-top: 4px; margin-left: 120px">
+      <table style="margin-top:-18px; margin-left: 30px; font-family: 'Poppins', sans-serif; line-height: 0.8; font-size: 14px">
             <tr>
                 <td style="font-weight: bold">Student Name</td>
                 <td style="font-weight: bold">:</td>
@@ -175,23 +202,36 @@
                 @endforeach --}}
             </tr>
       </table>
-    <h3 class="mt-4 soft" style="font-weight: bold; text-align:center">Soft Skills Project</h3>
-    <table height="10px" class="table sfp table-striped table-bordered text-center table-sm mt-1">
+    <h3 class="soft" style="font-weight: bold; text-align:center; font-size: 14px;">Soft Skills Project</h3>
+    <table height="100px" class="table sfp table-striped table-bordered text-center table-sm mt-1">
         <thead>
             <tr class="bg-primary text-white">
                 <th width="4%">No</th> 
-                <th width="15%">Aspek</th>
+                <th width="13%">Soft Skills</th>
+                <th width="20%">Deskripsi</th>
                 <th width="5%">Nilai</th>
-                <th width="45%">Deskripsi</th>
-                <th>Rekomendasi</th>
+                <th width="45%">Indikator Umum</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($mapel as $m)
                             <tr>
-                              <td>{{$loop->iteration}}</td>
+                              <td align="center">{{$loop->iteration}}</td>
                               <td>
-                                {{$m->nama_mapel}}
+                                    {{$m->nama_mapel}}
+                              </td>
+                              <td>
+                                @if ($m->nama_mapel === 'Critical Thinking')
+                                    Kemampuan memecahkan masalah dan kedalaman berpikir
+                                @elseif ($m->nama_mapel === 'Creativity')
+                                    Kemampuan menghasilkan karya yang autentik / orisinal
+                                @elseif ($m->nama_mapel === 'Communication')
+                                    Kemampuan dan Kejelasan menyampaikan pesan
+                                @elseif ($m->nama_mapel === 'Collaboration')
+                                    Kerjasama dan Kemampuan beradaptasi dalam tim
+                                @elseif ($m->nama_mapel === 'Leadership')
+                                    Sikap Tanggung Jawab dan Kedisiplinan
+                                @endif
                               </td>
                               <td>
                                 @foreach ($item->mapel as $ma)
@@ -218,31 +258,49 @@
                                 @endforeach
                               </td>
                               <td>
-                                @if ($m->nama_mapel === 'Critical Thinking')
-                                    Kemampuan memecahkan masalah dan kedalaman berpikir
-                                @elseif ($m->nama_mapel === 'Creativity')
-                                    Kemampuan menghasilkan karya yang autentik / orisinal
-                                @elseif ($m->nama_mapel === 'Communication')
-                                    Kemampuan dan Kejelasan menyampaikan pesan
-                                @elseif ($m->nama_mapel === 'Collaboration')
-                                    Kerjasama dan Kemampuan beradaptasi
-                                @elseif ($m->nama_mapel === 'Leadership')
-                                    Sikap Tanggung Jawab dan Kedisiplinan
-                                @endif
-                              </td>
-                              <td>
                                 @foreach ($item->mapel as $ma)
-                                    @if ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->rekomendasi}}
-                                        {{-- {{$ma->pivot->nilai}} --}}
-                                    {{-- @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}}
-                                    @elseif ($m->id === $ma->pivot->mapel_id)
-                                        {{$ma->pivot->nilai}} --}}
+                                    @if($m->id === $ma->pivot->mapel_id)
+                                      @if ($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Critical Thinking')
+                                          Sangat Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Creativity')
+                                          Sangat Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
+                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Communication')
+                                          Sangat Baik dalam menyampaikan pesan / proses berkomunikasi
+                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Collaboration')
+                                          Sangat baik dalam bekerjasama dan beradaptasi dalam tim
+                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Leadership')
+                                          Sangat Baik dalam hal tanggung jawab dan kedisiplinan pribadi
+                                      @elseif ($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Critical Thinking')
+                                          Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Creativity')
+                                          Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
+                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Communication')
+                                          Baik dalam menyampaikan pesan / proses berkomunikasi
+                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Collaboration')
+                                          Baik dalam bekerjasama dan beradaptasi dalam tim
+                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Leadership')
+                                          Baik dalam hal tanggung jawab dan kedisiplinan pribadi
+                                      @elseif ($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Critical Thinking')
+                                          Cukup dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Creativity')
+                                          Cukup dalam menghasilkan karya yang autentik / orisinal
+                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Communication')
+                                          Cukup dalam menyampaikan pesan / proses berkomunikasi
+                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Collaboration')
+                                          Cukup dalam bekerjasama dan beradaptasi dalam tim
+                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Leadership')
+                                          Cukup dalam hal tanggung jawab dan kedisiplinan pribadi
+                                      @elseif ($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Critical Thinking')
+                                          Kurang dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Creativity')
+                                          Kurang dalam menghasilkan karya yang autentik / orisinal
+                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Communication')
+                                          Kurang dalam menyampaikan pesan / proses berkomunikasi
+                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Collaboration')
+                                          Kurang dalam bekerjasama dan beradaptasi dalam tim
+                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Leadership')
+                                          Kurang dalam hal tanggung jawab dan kedisiplinan pribadi
+                                      @endif
                                     @endif
                                 @endforeach
                               </td>
@@ -250,7 +308,7 @@
                             @endforeach
         </tbody>
     </table>
-    <h3 class="soft" style="font-weight: bold; text-align:center">Project</h3>
+    <h3 class="soft p" style="font-weight: bold; text-align:center; margin-top: -12px; font-size: 14px;">Project</h3>
     <table class="table sp table-striped table-horvered table-bordered text-center table-sm mt-1">
         <thead>
             <tr class="bg-primary text-white">
@@ -307,7 +365,7 @@
                 $foto = storage_path("app/public/" . Auth::user()->guru->ttd);
             ?>
             <p style="margin-right: 150px; margin-top: -25px"><img src="{{$foto}}" alt=""></p>
-            <p style="margin-top: -40px; margin-right: 110px">{{Auth::user()->name}}</p>
+            <p style="margin-top: -40px; margin-right: 90px">{{Auth::user()->name}}</p>
         </div>
     </footer>
     <!-- Optional JavaScript -->
