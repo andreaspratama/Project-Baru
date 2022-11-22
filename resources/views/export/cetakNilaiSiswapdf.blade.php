@@ -174,6 +174,22 @@
                     <div class="unit-text">
                         Jl. Tanjung No. 14 Semarang
                     </div>
+                @elseif($item->unit === 'SMP')
+                    <div class="unit">
+                        SMP Kristen YSKI Semarang
+                    </div>
+                    <br>
+                    <div class="unit-text">
+                        Jl. Sidodadi Timur No.23 Semarang
+                    </div>
+                @elseif($item->unit === 'SMA')
+                    <div class="unit">
+                        SMA Kristen YSKI Semarang
+                    </div>
+                    <br>
+                    <div class="unit-text">
+                        Jl. Sidodadi Timur No.23 Semarang
+                    </div>
                 @endif
             </div>
         </center>
@@ -236,15 +252,15 @@
                               <td>
                                 @foreach ($item->mapel as $ma)
                                     @if ($m->id === $ma->pivot->mapel_id)
-                                      @if ($ma->pivot->nilai >= 90)
-                                          A
-                                      @elseif ($ma->pivot->nilai >= 80)
-                                          AB
-                                      @elseif ($ma->pivot->nilai >= 70)
-                                          B
-                                      @elseif ($ma->pivot->nilai <=69)
-                                          C
-                                      @endif
+                                        @if ($ma->pivot->nilai >= 90)
+                                            A
+                                        @elseif ($ma->pivot->nilai >= 80)
+                                            B
+                                        @elseif ($ma->pivot->nilai >= 70)
+                                            C
+                                        @elseif ($ma->pivot->nilai <= 69)
+                                            D
+                                        @endif
                                         {{-- {{$ma->pivot->nilai}} --}}
                                     {{-- @elseif ($m->id === $ma->pivot->mapel_id)
                                         {{$ma->pivot->nilai}}
@@ -359,13 +375,13 @@
 
     <footer>
         <div class="ttd" style="text-align: right">
-            <p style="margin-right: 110px; margin-top: -10px">Semarang, {{$tanggal}}</p>
+            <p style="margin-right: 110px; margin-top: -10px">Semarang, 16 Desember 2022</p>
             <?php
                 // $j = ;
                 $foto = storage_path("app/public/" . Auth::user()->guru->ttd);
             ?>
             <p style="margin-right: 150px; margin-top: -25px"><img src="{{$foto}}" alt=""></p>
-            <p style="margin-top: -40px; margin-right: 90px">{{Auth::user()->name}}</p>
+            <p style="margin-top: -40px; margin-right: 140px">{{Auth::user()->name}}</p>
         </div>
     </footer>
     <!-- Optional JavaScript -->

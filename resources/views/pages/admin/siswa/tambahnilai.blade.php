@@ -27,7 +27,7 @@
                         <table class="table table-bordered text-center nilai" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>Soft Skills</th>
+                              <th>Soft Skils</th>
                               <th>Deskripsi</th>
                               <th>Nilai</th>
                               <th>Indikator</th>
@@ -67,6 +67,9 @@
                                           D
                                       @endif
                                     @endif
+                                    {{-- @if ($ha === $ma->pivot->thnakademik)
+                                      
+                                    @endif --}}
                                     {{-- @if ($m->id === $ma->pivot->mapel_id)
                                       @if ($ma->pivot->nilai >= A)
                                           A
@@ -92,48 +95,51 @@
                               <td>
                                 @foreach ($item->mapel as $ma)
                                     @if($m->id === $ma->pivot->mapel_id)
-                                      @if ($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Critical Thinking')
-                                          Sangat Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
-                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Creativity')
-                                          Sangat Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
-                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Communication')
-                                          Sangat Baik dalam menyampaikan pesan / proses berkomunikasi
-                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Collaboration')
-                                          Sangat baik dalam bekerjasama dan beradaptasi dalam tim
-                                      @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Leadership')
-                                          Sangat Baik dalam hal tanggung jawab dan kedisiplinan pribadi
-                                      @elseif ($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Critical Thinking')
-                                          Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
-                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Creativity')
-                                          Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
-                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Communication')
-                                          Baik dalam menyampaikan pesan / proses berkomunikasi
-                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Collaboration')
-                                          Baik dalam bekerjasama dan beradaptasi dalam tim
-                                      @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Leadership')
-                                          Baik dalam hal tanggung jawab dan kedisiplinan pribadi
-                                      @elseif ($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Critical Thinking')
-                                          Cukup dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
-                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Creativity')
-                                          Cukup dalam menghasilkan karya yang autentik / orisinal
-                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Communication')
-                                          Cukup dalam menyampaikan pesan / proses berkomunikasi
-                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Collaboration')
-                                          Cukup dalam bekerjasama dan beradaptasi dalam tim
-                                      @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Leadership')
-                                          Cukup dalam hal tanggung jawab dan kedisiplinan pribadi
-                                      @elseif ($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Critical Thinking')
-                                          Kurang dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
-                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Creativity')
-                                          Kurang dalam menghasilkan karya yang autentik / orisinal
-                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Communication')
-                                          Kurang dalam menyampaikan pesan / proses berkomunikasi
-                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Collaboration')
-                                          Kurang dalam bekerjasama dan beradaptasi dalam tim
-                                      @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Leadership')
-                                          Kurang dalam hal tanggung jawab dan kedisiplinan pribadi
-                                      @endif
+                                        @if ($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Critical Thinking')
+                                            Sangat Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                        @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Creativity')
+                                            Sangat Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
+                                        @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Communication')
+                                            Sangat Baik dalam menyampaikan pesan / proses berkomunikasi
+                                        @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Collaboration')
+                                            Sangat baik dalam bekerjasama dan beradaptasi dalam tim
+                                        @elseif($ma->pivot->nilai >= '90' && $m->nama_mapel === 'Leadership')
+                                            Sangat Baik dalam hal tanggung jawab dan kedisiplinan pribadi
+                                        @elseif ($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Critical Thinking')
+                                            Baik dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                        @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Creativity')
+                                            Baik dalam menghasilkan karya yang autentik / orisinal dan menarik
+                                        @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Communication')
+                                            Baik dalam menyampaikan pesan / proses berkomunikasi
+                                        @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Collaboration')
+                                            Baik dalam bekerjasama dan beradaptasi dalam tim
+                                        @elseif($ma->pivot->nilai >= '80' && $m->nama_mapel === 'Leadership')
+                                            Baik dalam hal tanggung jawab dan kedisiplinan pribadi
+                                        @elseif ($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Critical Thinking')
+                                            Cukup dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                        @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Creativity')
+                                            Cukup dalam menghasilkan karya yang autentik / orisinal
+                                        @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Communication')
+                                            Cukup dalam menyampaikan pesan / proses berkomunikasi
+                                        @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Collaboration')
+                                            Cukup dalam bekerjasama dan beradaptasi dalam tim
+                                        @elseif($ma->pivot->nilai >= '70' && $m->nama_mapel === 'Leadership')
+                                            Cukup dalam hal tanggung jawab dan kedisiplinan pribadi
+                                        @elseif ($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Critical Thinking')
+                                            Kurang dalam menjawab pertanyaan dan dalam menjelaskan alasan yang logis tentang pilihan yang dibuat
+                                        @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Creativity')
+                                            Kurang dalam menghasilkan karya yang autentik / orisinal
+                                        @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Communication')
+                                            Kurang dalam menyampaikan pesan / proses berkomunikasi
+                                        @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Collaboration')
+                                            Kurang dalam bekerjasama dan beradaptasi dalam tim
+                                        @elseif($ma->pivot->nilai <= '69' && $m->nama_mapel === 'Leadership')
+                                            Kurang dalam hal tanggung jawab dan kedisiplinan pribadi
+                                        @endif
                                     @endif
+                                    {{-- @if ($ha === $ma->pivot->thnakademik)
+                                      
+                                    @endif --}}
                                 @endforeach
                                 {{-- @if ($m->nama_mapel === 'Critical Thinking')
                                     Kemampuan memecahkan masalah dan kedalaman berpikir
@@ -156,10 +162,10 @@
                               </td> --}}
                               <td>
                                 @if ($item->mapel()->where('mapel_id', $m->id)->exists())
-                                    <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaiedit" class="btn btn-sm btn-warning">Edit Nilai</a>
-                                @else
-                                    <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaitambah" class="btn btn-primary btn-sm">Input Nilai</a>
-                                @endif
+                                        <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaiedit" class="btn btn-sm btn-warning">Edit Nilai</a>
+                                    @else
+                                        <a href="/siswa/{{$item->id}}/{{$m->id}}/nilaitambah" class="btn btn-primary btn-sm">Input Nilai</a>
+                                    @endif
                                 <!--<a href="/siswa/{{$item->id}}/{{$m->id}}/nilaitambah" class="btn btn-primary btn-sm">Input Nilai</a>-->
                                 <!--<a href="/siswa/{{$item->id}}/{{$m->id}}/nilaiedit" class="btn btn-sm btn-warning">Edit Nilai</a>-->
                               </td>

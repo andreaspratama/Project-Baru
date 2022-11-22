@@ -60,8 +60,10 @@ class NilaiController extends Controller
         $mapel = Mapel::all();
         $thnakademiks = Thnakademik::all();
         $projects = Project::all();
+        $thn = Thnakademik::where('status', 'Aktif')->first();
+        $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        return view('pages.admin.siswa.tambahnilai', compact('item', 'mapel', 'thnakademiks', 'projects'));
+        return view('pages.admin.siswa.tambahnilai', compact('item', 'mapel', 'thnakademiks', 'projects', 'ha'));
     }
 
     public function detailCek($id)

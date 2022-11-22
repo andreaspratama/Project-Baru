@@ -19,7 +19,7 @@
                   <label for="mapel">Mapel</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="mapel"><i class="far fa-id-card"></i></span>
+                      <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
                     </div>
                     <input type="text" class="form-control @error('mapel') is-invalid @enderror" placeholder="Mapel" name="mapel" value="{{$mapel->nama_mapel}}" disabled>
                     @error('mapel')
@@ -33,9 +33,9 @@
                     <label for="nilai">Nilai</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="nilai"><i class="far fa-id-card"></i></span>
+                        <span class="input-group-text" id="nilai"><i class="fas fa-award"></i></span>
                       </div>
-                      <input type="text" class="form-control @error('nilai') is-invalid @enderror" placeholder="Nilai" name="nilai">
+                      <input type="text" class="form-control @error('nilai') is-invalid @enderror" placeholder="Masukan Angka Saja" name="nilai">
                       @error('nilai')
                         <div class="invalid-feedback">
                             {{$message}}

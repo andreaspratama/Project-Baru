@@ -19,7 +19,7 @@
                   <label for="project">Project</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="project"><i class="far fa-id-card"></i></span>
+                      <span class="input-group-text" id="project"><i class="fas fa-book-reader"></i></span>
                     </div>
                     <input type="text" class="form-control @error('project') is-invalid @enderror" placeholder="Project" name="project" value="{{$project->nama}}" disabled>
                     @error('project')
@@ -33,7 +33,7 @@
                     <label for="nilai">Nilai</label>
                     <div class="input-group">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="nilai"><i class="far fa-id-card"></i></span>
+                        <span class="input-group-text" id="nilai"><i class="fas fa-award"></i></span>
                       </div>
                       <input type="text" class="form-control @error('nilai') is-invalid @enderror" placeholder="Nilai" name="nilai" value="{{$isi->pivot->nilai}}">
                       @error('nilai')
@@ -58,7 +58,7 @@
                   <label for="hasil">Hasil</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="hasil"><i class="far fa-id-card"></i></span>
+                      <span class="input-group-text" id="hasil"><i class="fas fa-award"></i></span>
                     </div>
                     <input type="text" class="form-control @error('hasil') is-invalid @enderror" placeholder="Hasil" name="hasil" value="{{$isi->pivot->hasil}}">
                     @error('hasil')
