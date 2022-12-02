@@ -145,14 +145,14 @@
         </center>
         <center>
             <div class="text-head-title" style="font-family: 'Poppins', sans-serif;">
-                <h2 style="font-size: 24px">Project Based Report</h2>
+                <h2 style="font-size: 24px">Rapor Proyek</h2>
             </div>
         </center>
         <center>
             <div class="text-head">
                 @if ($item->unit === 'K1')
                     <div class="unit">
-                        PG TK Kristen 1 YSKI Semarang
+                        PG - TK - SD Kristen 1 YSKI Semarang
                     </div>
                     <br>
                     <div class="unit-text">
@@ -160,7 +160,7 @@
                     </div>
                 @elseif($item->unit === 'K2')
                     <div class="unit">
-                        PG TK Kristen 2 YSKI Semarang
+                        TD - PG - TK - SD Kristen 2 YSKI Semarang
                     </div>
                     <br>
                     <div class="unit-text">
@@ -168,7 +168,7 @@
                     </div>
                 @elseif($item->unit === 'K3')
                     <div class="unit">
-                        PG TK Kristen 3 YSKI Semarang
+                        PG - TK - SD Kristen 3 YSKI Semarang
                     </div>
                     <br>
                     <div class="unit-text">
@@ -196,17 +196,17 @@
       </header>
       <table style="margin-top:-18px; margin-left: 30px; font-family: 'Poppins', sans-serif; line-height: 0.8; font-size: 14px">
             <tr>
-                <td style="font-weight: bold">Student Name</td>
+                <td style="font-weight: bold">Nama</td>
                 <td style="font-weight: bold">:</td>
                 <td style="font-weight: bold">{{$item->nama}}</td>
             </tr>
             <tr>
-                <td style="font-weight: bold">Student ID Number</td>
+                <td style="font-weight: bold">NISN</td>
                 <td style="font-weight: bold">:</td>
                 <td style="font-weight: bold">{{$item->nisn}}</td>
             </tr>
             <tr>
-                <td style="font-weight: bold">Academic Year</td>
+                <td style="font-weight: bold">Tahun Akademik</td>
                 <td style="font-weight: bold">:</td>
                 <td style="font-weight: bold">2021 / 2022 Genap</td>
                 {{-- @foreach ($thnakademiks as $akdm)
@@ -218,15 +218,15 @@
                 @endforeach --}}
             </tr>
       </table>
-    <h3 class="soft" style="font-weight: bold; text-align:center; font-size: 14px;">Soft Skills Project</h3>
+    <h3 class="soft" style="font-weight: bold; text-align:center; font-size: 14px;"><i>Soft Skills</i></h3>
     <table height="100px" class="table sfp table-striped table-bordered text-center table-sm mt-1">
         <thead>
             <tr class="bg-primary text-white">
                 <th width="4%">No</th> 
-                <th width="13%">Soft Skills</th>
+                <th width="13%">Penilaian <i>Soft Skills</i></th>
                 <th width="20%">Deskripsi</th>
                 <th width="5%">Nilai</th>
-                <th width="45%">Indikator Umum</th>
+                <th width="45%">Keterangan</th>
             </tr>
         </thead>
         <tbody>
@@ -234,7 +234,7 @@
                             <tr>
                               <td align="center">{{$loop->iteration}}</td>
                               <td>
-                                    {{$m->nama_mapel}}
+                                    <i>{{$m->nama_mapel}}</i>
                               </td>
                               <td>
                                 @if ($m->nama_mapel === 'Critical Thinking')
@@ -324,19 +324,28 @@
                             @endforeach
         </tbody>
     </table>
-    <h3 class="soft p" style="font-weight: bold; text-align:center; margin-top: -12px; font-size: 14px;">Project</h3>
+    <h3 class="soft p" style="font-weight: bold; text-align:center; margin-top: -12px; font-size: 14px;">Proyek</h3>
     <table class="table sp table-striped table-horvered table-bordered text-center table-sm mt-1">
         <thead>
             <tr class="bg-primary text-white">
                 <th width="4%">No</th>
-                <th width="15%">Project</th>
+                <th width="25%">Penilaian Proyek</th>
                 <th width="5%">Nilai</th>
-                <th width="30%">Pengerjaan Project</th>
+                <th width="15%">Pengerjaan Proyek</th>
                 <th>Hasil</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($projects as $p)
+            @foreach ($projectcoba as $pc)
+                @if($pc->siswa_id === $item->id)
+                    <td>{{$loop->iteration}}</td>
+                    <td>{{$pc->project}}</td>
+                    <td>{{$pc->nilai}}</td>
+                    <td>{{$pc->pengerjaan}}</td>
+                    <td>{{$pc->hasil}}</td>
+                @endif
+            @endforeach
+            {{-- @foreach ($projects as $p)
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>
@@ -345,7 +354,7 @@
                     <td>
                     @foreach ($item->project as $pro)
                         @if ($p->id === $pro->pivot->project_id)
-                            {{$pro->pivot->nilai}}
+                            {{$pro->pivot->nilai}} --}}
                             {{-- {{$ma->pivot->nilai}} --}}
                         {{-- @elseif ($m->id === $ma->pivot->mapel_id)
                             {{$ma->pivot->nilai}}
@@ -355,7 +364,7 @@
                             {{$ma->pivot->nilai}}
                         @elseif ($m->id === $ma->pivot->mapel_id)
                             {{$ma->pivot->nilai}} --}}
-                        @endif
+                        {{-- @endif
                     @endforeach
                     </td>
                     <td>
@@ -369,7 +378,7 @@
                     @endforeach
                     </td>
                 </tr>                  
-            @endforeach
+            @endforeach --}}
         </tbody>
     </table>   
 

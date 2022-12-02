@@ -13,16 +13,30 @@
 
         <div class="card shadow">
             <div class="card-body">
-              <form action="/siswa/{{$item->id}}/{{$project->id}}/nilaiupdateproject" method="POST">
+              <form action="/siswa/{{$item->id}}/nilaiupdateprojectbaru" method="POST">
                 @csrf
-                <div class="form-group">
-                  <label for="nama">Project</label>
+                <div class="form-group" hidden>
+                  <label for="siswa_id">Siswa_Id</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="nama"><i class="fas fa-book-reader"></i></span>
+                      <span class="input-group-text" id="siswa_id"><i class="fas fa-book-reader"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="nama" name="nama">
-                    @error('nama')
+                    <input type="text" class="form-control @error('siswa_id') is-invalid @enderror" placeholder="Nama Siswa_Id" name="siswa_id" value="{{$item->id}}">
+                    @error('siswa_id')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                    @enderror
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="project">Project</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="project"><i class="fas fa-book-reader"></i></span>
+                    </div>
+                    <input type="text" class="form-control @error('project') is-invalid @enderror" placeholder="Nama Project" name="project">
+                    @error('project')
                       <div class="invalid-feedback">
                           {{$message}}
                       </div>
@@ -48,11 +62,16 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
                   </div>                    
-                  <select class="custom-select" name="task">
+                  <select class="custom-select @error('pengerjaan') is-invalid @enderror" name="pengerjaan">
                       <option>-- Pilih --</option>
                       <option value="Individu">Individu</option>
                       <option value="Kelompok">Kelompok</option>
                   </select>
+                  @error('pengerjaan')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                  @enderror
                 </div>
                 <div class="form-group">
                   <label for="hasil">Hasil</label>

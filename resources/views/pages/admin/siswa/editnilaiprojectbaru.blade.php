@@ -1,7 +1,7 @@
 @extends('layouts.admin.admin')
 
 @section('title')
-    Input Nilai
+    Edit Nilai
 @endsection
 
 @section('content')
@@ -9,20 +9,34 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Input Nilai Project Siswa {{$item->nama}}</h1>
+        <h1 class="h3 mb-2 text-gray-800">Edit Nilai Project Siswa {{$item->nama}}</h1>
 
         <div class="card shadow">
             <div class="card-body">
-              <form action="/siswa/{{$item->id}}/{{$project->id}}/nilaiupdateproject" method="POST">
+              <form action="/siswa/{{$item->id}}/{{$project->id}}/editnilaiupdateprojectbaru" method="POST">
                 @csrf
-                <div class="form-group">
-                  <label for="nama">Project</label>
+                <div class="form-group" hidden>
+                  <label for="siswa_id">Siswa_Id</label>
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="nama"><i class="fas fa-book-reader"></i></span>
+                      <span class="input-group-text" id="siswa_id"><i class="fas fa-book-reader"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('nama') is-invalid @enderror" placeholder="nama" name="nama">
-                    @error('nama')
+                    <input type="text" class="form-control @error('siswa_id') is-invalid @enderror" placeholder="Nama Siswa_Id" name="siswa_id" value="{{$item->id}}">
+                    @error('siswa_id')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                    @enderror
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="project">Project</label>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="project"><i class="fas fa-book-reader"></i></span>
+                    </div>
+                    <input type="text" class="form-control @error('project') is-invalid @enderror" placeholder="Nama Project" name="project" value="{{$project->project}}">
+                    @error('project')
                       <div class="invalid-feedback">
                           {{$message}}
                       </div>
@@ -35,7 +49,7 @@
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="nilai"><i class="fas fa-award"></i></span>
                       </div>
-                      <input type="text" class="form-control @error('nilai') is-invalid @enderror" placeholder="Nilai" name="nilai">
+                      <input type="text" class="form-control @error('nilai') is-invalid @enderror" placeholder="Nilai" name="nilai" value="{{$project->nilai}}">
                       @error('nilai')
                         <div class="invalid-feedback">
                             {{$message}}
@@ -48,10 +62,10 @@
                   <div class="input-group-prepend">
                       <span class="input-group-text" id="mapel"><i class="fas fa-book-reader"></i></span>
                   </div>                    
-                  <select class="custom-select" name="task">
+                  <select class="custom-select" name="pengerjaan">
                       <option>-- Pilih --</option>
-                      <option value="Individu">Individu</option>
-                      <option value="Kelompok">Kelompok</option>
+                      <option value="Individu" @if($project->pengerjaan == 'Individu') selected @endif>Individu</option>
+                      <option value="Kelompok" @if($project->pengerjaan == 'Kelompok') selected @endif>Kelompok</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -60,7 +74,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="hasil"><i class="fas fa-award"></i></span>
                     </div>
-                    <input type="text" class="form-control @error('hasil') is-invalid @enderror" placeholder="Hasil" name="hasil">
+                    <input type="text" class="form-control @error('hasil') is-invalid @enderror" placeholder="Hasil" name="hasil" value="{{$project->hasil}}">
                     @error('hasil')
                       <div class="invalid-feedback">
                           {{$message}}

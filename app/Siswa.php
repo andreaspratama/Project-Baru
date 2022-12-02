@@ -27,6 +27,11 @@ class Siswa extends Model
         return $this->belongsToMany(Project::class)->withPivot(['thnakademik', 'nilai', 'task', 'hasil']);
     }
 
+    public function projectcoba()
+    {
+        return $this->hasMany(Projectcoba::class, 'siswas_id', 'id');
+    }
+
     // public function mapels()
     // {
     //     return $this->belongsToMany('App\Mapel');

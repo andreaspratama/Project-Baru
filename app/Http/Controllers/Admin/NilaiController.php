@@ -11,7 +11,9 @@ use App\Thnakademik;
 use App\User;
 use App\Sekolah;
 use App\Project;
+use App\Projectcoba;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\ProyekRequest;
 use PDF;
 use App\Exports\AbsensiswaExport;
 use Spipu\Html2Pdf\Html2Pdf;
@@ -60,10 +62,11 @@ class NilaiController extends Controller
         $mapel = Mapel::all();
         $thnakademiks = Thnakademik::all();
         $projects = Project::all();
+        $projectcoba = Projectcoba::all();
         $thn = Thnakademik::where('status', 'Aktif')->first();
         $ha = $thn->tahun_akademik." ".$thn->semester;
 
-        return view('pages.admin.siswa.tambahnilai', compact('item', 'mapel', 'thnakademiks', 'projects', 'ha'));
+        return view('pages.admin.siswa.tambahnilai', compact('item', 'mapel', 'thnakademiks', 'projects', 'ha', 'projectcoba'));
     }
 
     public function detailCek($id)
@@ -126,6 +129,25 @@ class NilaiController extends Controller
         ]);
     }
 
+    public function nilaitambahprojectbaru($id)
+    {
+        $item = Siswa::findOrFail($id);
+        $thnakademiks = Thnakademik::all();
+
+        return view('pages.admin.siswa.inputnilaiprojectbaru', [
+            'item' => $item,
+            'thnakademiks' => $thnakademiks
+        ]);
+    }
+
+    // public function nilaitambahprojectbaru($id)
+    // {
+    //     $item = Siswa::findOrFail($id);
+    //     $thnakademiks = Thnakademik::all();
+
+
+    // }
+
     public function nilaitambah($id, $idmapel)
     {
         $item = Siswa::findOrFail($id);
@@ -155,18 +177,16 @@ class NilaiController extends Controller
         ]);
     }
 
-    public function nilaieditproject($id, $idproject)
+    public function nilaieditprojectbaru($id, $idprojectbaru)
     {
         $item = Siswa::findOrFail($id);
         // $nilai = $item->mapel()->findOrFail($idmapel);
-        $isi = $item->project()->findOrFail($idproject);
-        $project = Project::findOrFail($idproject);
+        $project = Projectcoba::findOrFail($idprojectbaru);
         $thnakademiks = Thnakademik::all();
 
-        return view('pages.admin.siswa.editnilaiproject', [
+        return view('pages.admin.siswa.editnilaiprojectbaru', [
             'item' => $item,
             'project' => $project,
-            'isi' => $isi,
             'thnakademiks' => $thnakademiks
         ]);
     }
@@ -192,11 +212,30 @@ class NilaiController extends Controller
     public function nilaiupdateproject(Request $request, $id, $idproject)
     {
         $item = Siswa::findOrFail($id);
-        $project = Project::findOrFail($idproject);
+        $project = $request->all();
         $thn = Thnakademik::where('status', 'Aktif')->first();
         $ha = $thn->tahun_akademik." ".$thn->semester;
 
         $item->project()->attach($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil, 'thnakademik' => $ha]);
+        
+        // $siswa = Siswa::findOrFail($id);
+
+        // $siswa->mapel()->updateExistingPivot($request->mapel, ['nilai' => $request->nilai]);
+
+        // dd($siswa);
+
+        return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Ditambahkan');
+    }
+
+    public function nilaiupdateprojectbaru(ProyekRequest $request, $id)
+    {
+        $item = Siswa::findOrFail($id);
+        $data = $request->all();
+        Projectcoba::create($data);
+        // $thn = Thnakademik::where('status', 'Aktif')->first();
+        // $ha = $thn->tahun_akademik." ".$thn->semester;
+
+        // $item->project()->attach($project, ['nilai' => $request->nilai, 'task' => $request->task, 'hasil' => $request->hasil, 'thnakademik' => $ha]);
         
         // $siswa = Siswa::findOrFail($id);
 
@@ -243,6 +282,23 @@ class NilaiController extends Controller
         return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Diubah');
     }
 
+    public function editnilaiupdateprojectbaru(Request $request, $id, $idprojectbaru)
+    {
+        $item = Siswa::findOrFail($id);
+        $project = Projectcoba::findOrFail($idprojectbaru);
+        $data = $request->all();
+
+        $project->update($data);
+        
+        // $siswa = Siswa::findOrFail($id);
+
+        // $siswa->mapel()->updateExistingPivot($request->mapel, ['nilai' => $request->nilai]);
+
+        // dd($siswa);
+
+        return redirect('siswa/'.$id.'/nilai')->with('status', 'Nilai Berhasil Diubah');
+    }
+
     public function editproject($id, $idproject)
     {
         $item = Siswa::findOrFail($id);
@@ -278,10 +334,11 @@ class NilaiController extends Controller
         $mapel = Mapel::all();
         $thnakademiks = Thnakademik::all();
         $projects = Project::all();
+        $projectcoba = Projectcoba::all();
         $sekolah = Sekolah::all();
         $tanggal = date("d-m-Y");
 
-        $pdf = \PDF::loadview('export.cetakNilaiSiswapdf', compact('mapel', 'item', 'sekolah', 'projects', 'thnakademiks', 'tanggal'))->setPaper('a4', 'landscape');
+        $pdf = \PDF::loadview('export.cetakNilaiSiswapdf', compact('mapel', 'item', 'sekolah', 'projects', 'thnakademiks', 'tanggal', 'projectcoba'))->setPaper('a4', 'landscape');
         // return $pdf->download('laporan-absen.pdf');
         return $pdf->stream();
     }

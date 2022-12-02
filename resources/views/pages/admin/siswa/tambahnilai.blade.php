@@ -22,12 +22,12 @@
                       {{-- <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal"data-target="#exampleModal">
                           Tambah Nilai
                       </button> --}}
-                      <h3 class="text-primary" style="font-weight: bold">Soft Skills Project</h3>
+                      <h3 class="text-primary" style="font-weight: bold">Soft Skills</h3>
                       <div class="table-responsive">
                         <table class="table table-bordered text-center nilai" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>Soft Skils</th>
+                              <th>Penilaian Soft Skills</th>
                               <th>Deskripsi</th>
                               <th>Nilai</th>
                               <th>Indikator</th>
@@ -177,20 +177,36 @@
                       {{-- <button type="button" class="btn btn-primary mb-3 btn-sm" data-toggle="modal"data-target="#project">
                         Tambah Nilai
                       </button> --}}
-                      <h3 class="text-primary" style="font-weight: bold">Project</h3>
+                      <h3 class="text-primary" style="font-weight: bold">Proyek</h3>
+                      <a href="/siswa/{{$item->id}}/nilaitambahprojectbaru" class="btn btn-primary mb-2">Input Nilai Proyek</a>
                       <div class="table-responsive">
                         <table class="table table-bordered text-center nilai" id="dataTable" width="100%" cellspacing="0">
                           <thead>
                             <tr>
-                              <th>Project</th>
+                              <th>Penilaian Proyek</th>
                               <th>Nilai</th>
-                              <th>Pengerjaan Project</th>
+                              <th>Pengerjaan Proyek</th>
                               <th>Hasil</th>
                               <th>Aksi</th>
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($projects as $p)
+                            <tr>
+                              @foreach ($projectcoba as $pc)
+                                @if($pc->siswa_id === $item->id)
+                                  <td>{{$pc->project}}</td>
+                                  <td>{{$pc->nilai}}</td>
+                                  <td>{{$pc->pengerjaan}}</td>
+                                  <td>{{$pc->hasil}}</td>
+                                  <td>
+                                    @if ($pc->where('siswa_id', $item->id)->exists())
+                                        <a href="/siswa/{{$item->id}}/{{$pc->id}}/nilaieditprojectbaru" class="btn btn-warning">Edit</a>
+                                    @endif
+                                  </td>
+                                @endif
+                              @endforeach
+                            </tr>
+                            {{-- @foreach ($projects as $p)
                               <tr>
                                 <td>
                                   {{$p->nama}}
@@ -198,7 +214,7 @@
                                 <td>
                                   @foreach ($item->project as $pro)
                                       @if ($p->id === $pro->pivot->project_id)
-                                        {{$pro->pivot->nilai}}
+                                        {{$pro->pivot->nilai}} --}}
                                           {{-- {{$ma->pivot->nilai}} --}}
                                       {{-- @elseif ($m->id === $ma->pivot->mapel_id)
                                           {{$ma->pivot->nilai}}
@@ -208,7 +224,7 @@
                                           {{$ma->pivot->nilai}}
                                       @elseif ($m->id === $ma->pivot->mapel_id)
                                           {{$ma->pivot->nilai}} --}}
-                                      @endif
+                                      {{-- @endif
                                   @endforeach
                                 </td>
                                 <td>
@@ -229,7 +245,7 @@
                                     @endif
                                 </td>
                               </tr>
-                            @endforeach
+                            @endforeach --}}
                               {{-- @foreach ($projects as $p)
                                 <tr>
                                   <td>{{$p->project}}</td>
